@@ -1,0 +1,30 @@
+include ./common/head
++head('Main Page')
+h1= title
+p Welcome to #{title}
+form(action='/submit_lead', method='POST')
+    .input-group.mb-3
+        input(name='lead_email', type='email', class="form-control", placeholder='Enter your email address')
+        .input-group-append
+            button(type='submit', class="btn btn-primary") Submit
+table.table.table-striped.table-bordered
+    thead.thead-dark
+        tr
+            th(scope='col', style="width: 350px") #
+            th(scope='col') Email
+            th(scope='col', style="width: 50px") ...
+    tbody
+        if leads.length > 0
+            for lead in leads
+                tr(id=`lead_${lead.id}`)
+                    th(scope="row")= lead.id
+                    td= lead.email
+                    td
+                        div.btn-toolbar(role="toolbar", aria-label="Toolbar with button groups")
+                            div.btn-group.mr-2(role="group", aria-label="Second group")
+                                a(href="/lead/" + lead.id, class="btn btn-primary") Details
+                                button(type="button", onclick=`deleteLead('${lead.id}')`, class="btn btn-danger") Delete
+        else
+            tr
+                td(scope="row", colspan="3") Kayıt bulunamadı!
+script(src='/javascripts/leads.js')

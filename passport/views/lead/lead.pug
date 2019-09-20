@@ -1,0 +1,15 @@
+include ../common/head
++head('Lead Detail')
+body
+    h1 Lead Detail
+    p
+        span(style="font-weight: bold") Id: 
+        span #{lead.id}
+    p
+        span(style="font-weight: bold") Email: 
+        span #{lead.email}
+    div.btn-toolbar(role="toolbar", aria-label="Toolbar with button groups")
+        div.btn-group.mr-2(role="group", aria-label="Second group")
+            a(href="/lead/edit/" + lead.id, class="btn btn-primary") Edit
+            a(href="#", onclick=`deleteLead('${lead.id}', true)`, class="btn btn-danger") Delete
+script(src='/javascripts/leads.js')

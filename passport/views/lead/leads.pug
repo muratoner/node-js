@@ -1,0 +1,23 @@
+include ../common/head
++head('Leads')
+table.table.table-striped.table-bordered
+    thead.thead-dark
+        tr
+            th(scope='col', style="width: 350px") #
+            th(scope='col') Email
+            th(scope='col', style="width: 50px") ...
+    tbody
+        if leads.length > 0
+            for lead in leads
+                tr(id=`lead_${lead.id}`)
+                    th(scope="row")= lead.id
+                    td= lead.email
+                    td
+                        div.btn-toolbar(role="toolbar", aria-label="Toolbar with button groups")
+                            div.btn-group.mr-2(role="group", aria-label="Second group")
+                                a(href="/lead/edit/" + lead.id, class="btn btn-secondary") Details
+                                button(type="button", onclick=`deleteLead('${lead.id}')`, class="btn btn-secondary") Delete
+        else
+            tr
+                td(scope="row", colspan="3") Kayıt bulunamadı!
+script(src='/javascripts/leads.js')
