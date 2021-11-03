@@ -21,7 +21,7 @@
     "pug": "2.0.0-beta11",
     "sequelize": "^5.19.0",
     "tedious": "^6.4.0",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
